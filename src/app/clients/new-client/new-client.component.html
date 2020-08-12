@@ -1,0 +1,67 @@
+<h2>Nowy Klient</h2>
+
+<!--
+nazwa firmy/osoby
+nip?
+moasto
+kod pocztowy
+adres
+
+-->
+<!--PIERWSZY SPOSÓB:
+<p>Nazwa firmy: <input type="text" (input)="onNameInput($event)"></p>
+ <p>Nazwa firmy: <input type="text" (input)="onFieldChange($event, 'name')"></p>
+<p>Nip: <input type="text" (input)="onFieldChange($event, 'nip')"></p>
+<p>Miasto: <input type="text"  (input)="onFieldChange($event, 'city')"></p> -->
+
+<div class="form">
+  <mat-form-field>
+    <mat-label>Nazwa firmy</mat-label>
+    <input
+      matInput
+      placeholder="Nazwa firmy"
+      [formControl]="newClientFG.get('name')"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nip</mat-label>
+    <input matInput placeholder="Nip" [formControl]="newClientFG.get('nip')" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Miasto</mat-label>
+    <input
+      matInput
+      placeholder="Miasto"
+      [formControl]="newClientFG.get('city')"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Kod pocztowy</mat-label>
+    <input
+      matInput
+      placeholder="Kod pocztowy"
+      [formControl]="newClientFG.get('postcode')"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Adres</mat-label>
+    <input
+      matInput
+      placeholder="Adres"
+      [formControl]="newClientFG.get('address')"
+    />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="newClientFG.invalid"
+    (click)="onClientSave()"
+  >
+    Dodaj klienta
+  </button>
+</div>
+<pre> {{ newClientFG.value | json }}</pre>
+
+{{ newClient | json }}
